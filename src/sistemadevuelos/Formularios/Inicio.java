@@ -6,7 +6,12 @@ package sistemadevuelos.Formularios;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import sistemadevuelos.BusquedaVuelos.Busqueda;
+import sistemadevuelos.InicioSesion.IniciarSesion;
+import sistemadevuelos.InicioSesion.Registrarse;
+
 
 /**
  *
@@ -38,7 +43,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new FondoPanel();
-        jButton1 = new javax.swing.JButton();
+        BotonVuelos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -66,8 +71,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BotonRegistrarse = new javax.swing.JButton();
+        BotonIniciarSesion = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
 
@@ -79,11 +84,16 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel2.setPreferredSize(new java.awt.Dimension(1500, 1500));
 
-        jButton1.setText("Vuelos Disponibles");
-        jButton1.setAlignmentX(321.5F);
-        jButton1.setAlignmentY(120.0F);
-        jButton1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        BotonVuelos.setText("Vuelos Disponibles");
+        BotonVuelos.setAlignmentX(321.5F);
+        BotonVuelos.setAlignmentY(120.0F);
+        BotonVuelos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BotonVuelos.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        BotonVuelos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVuelosActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("¿ESTAS PREPARADO PARA VOLAR HOY?");
 
@@ -172,7 +182,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
                     .addComponent(jLabel24))
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,9 +257,19 @@ public class Inicio extends javax.swing.JFrame {
                     .addGap(91, 91, 91)))
         );
 
-        jButton2.setText("Registrarse");
+        BotonRegistrarse.setText("Registrarse");
+        BotonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarseActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Iniciar Sesion");
+        BotonIniciarSesion.setText("Iniciar Sesion");
+        BotonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIniciarSesionActionPerformed(evt);
+            }
+        });
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/VOLANDO.png"))); // NOI18N
 
@@ -279,9 +299,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(BotonIniciarSesion)
                 .addGap(31, 31, 31)
-                .addComponent(jButton2)
+                .addComponent(BotonRegistrarse)
                 .addGap(41, 41, 41))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -293,7 +313,7 @@ public class Inicio extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(147, 147, 147)
-                                        .addComponent(jButton1))
+                                        .addComponent(BotonVuelos))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(113, 113, 113)
                                         .addComponent(jLabel1)))
@@ -310,20 +330,20 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(BotonRegistrarse)
+                            .addComponent(BotonIniciarSesion)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(167, 167, 167)
+                .addGap(152, 152, 152)
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                .addComponent(BotonVuelos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,15 +374,46 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVuelosActionPerformed
+        // Crear una instancia del JFrame Busqueda
+    Busqueda busqueda = new Busqueda();
+    
+    // Hacer visible el JFrame Busqueda
+    busqueda.setVisible(true);
+    
+    // Cerrar el JFrame actual (Inicio)
+    this.dispose();
+    }//GEN-LAST:event_BotonVuelosActionPerformed
+
+    private void BotonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarSesionActionPerformed
+    IniciarSesion inicio = new IniciarSesion();
+    
+    // Hacer visible el JFrame Busqueda
+    inicio.setVisible(true);
+    
+    // Cerrar el JFrame actual (Inicio)
+    this.dispose();
+    }//GEN-LAST:event_BotonIniciarSesionActionPerformed
+
+    private void BotonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarseActionPerformed
+    Registrarse registro = new Registrarse();
+    
+    // Hacer visible el JFrame Busqueda
+    registro.setVisible(true);
+    
+    // Cerrar el JFrame actual (Inicio)
+    this.dispose();
+    }//GEN-LAST:event_BotonRegistrarseActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton BotonIniciarSesion;
+    private javax.swing.JButton BotonRegistrarse;
+    private javax.swing.JButton BotonVuelos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

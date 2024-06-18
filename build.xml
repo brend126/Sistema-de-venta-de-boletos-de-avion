@@ -8,6 +8,32 @@
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
 <project name="SistemaDeVuelos" default="default" basedir=".">
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="lib.dir" value="lib"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="NombreDeTuClasePrincipal" classpath="${classes.dir}:${classpath}">
+            <classpath refid="classpath"/>
+        </java>
+    </target>
+
+    <!-- Puedes añadir más targets según tus necesidades -->
+</project>
     <description>Builds, tests, and runs the project SistemaDeVuelos.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
