@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistemadevuelos.InicioSesion;
-
+import javax.swing.JOptionPane;
+import sistemadevuelos.Home.Inicio;
 /**
  *
  * @author ACER
@@ -15,6 +16,8 @@ public class Registrarse extends javax.swing.JFrame {
      */
     public Registrarse() {
         initComponents();
+        //Centrar el formulario
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -39,7 +42,7 @@ public class Registrarse extends javax.swing.JFrame {
         contraseña_txt = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         CContraseña_txt = new javax.swing.JPasswordField();
-        ingresar_btn = new javax.swing.JButton();
+        registrar_btn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -47,10 +50,12 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        Inicio_btn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1366, 768));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(1336, 1176));
 
@@ -102,14 +107,14 @@ public class Registrarse extends javax.swing.JFrame {
         CContraseña_txt.setText("jPasswordField2");
         CContraseña_txt.setBorder(new RoundedCornerBorder(8));
 
-        ingresar_btn.setBackground(new java.awt.Color(0, 0, 0));
-        ingresar_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        ingresar_btn.setForeground(new java.awt.Color(255, 255, 255));
-        ingresar_btn.setText("Ingresa con e-mail");
-        ingresar_btn.setBorder(new RoundedCornerBorder(8));
-        ingresar_btn.addActionListener(new java.awt.event.ActionListener() {
+        registrar_btn.setBackground(new java.awt.Color(0, 0, 0));
+        registrar_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        registrar_btn.setForeground(new java.awt.Color(255, 255, 255));
+        registrar_btn.setText("Registrar con e-mail");
+        registrar_btn.setBorder(new RoundedCornerBorder(8));
+        registrar_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresar_btnActionPerformed(evt);
+                registrar_btnActionPerformed(evt);
             }
         });
 
@@ -158,7 +163,7 @@ public class Registrarse extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ingresar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(registrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,7 +206,7 @@ public class Registrarse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CContraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ingresar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -218,24 +223,38 @@ public class Registrarse extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
+        Inicio_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/VOLANDO.png"))); // NOI18N
+        Inicio_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Inicio_btnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(308, 308, 308)
+                .addContainerGap()
+                .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(674, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(642, 642, 642))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -249,11 +268,11 @@ public class Registrarse extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1336, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1365, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1182, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
 
         pack();
@@ -267,55 +286,45 @@ public class Registrarse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombre_txtActionPerformed
 
-    private void ingresar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingresar_btnActionPerformed
+    private void registrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_btnActionPerformed
+    String correo = correo_txt.getText();
+    String nombre = nombre_txt.getText();
+    char[] contraseña = contraseña_txt.getPassword();
+    char[] confirmacionContraseña = CContraseña_txt.getPassword();
+    
+    if (correo.isEmpty() || nombre.isEmpty() || contraseña.length == 0 || confirmacionContraseña.length == 0) {
+        JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos.");
+        return;
+    }
+    
+    Consultas con = new Consultas();
+    con.guardarUsuarios(correo, nombre, contraseña, confirmacionContraseña);
+    }//GEN-LAST:event_registrar_btnActionPerformed
 
     private void IngresarGoogle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarGoogle_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IngresarGoogle_btnActionPerformed
 
+    private void Inicio_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inicio_btnMouseClicked
+    Inicio inicio = new Inicio();
+    
+    // Hacer visible el JFrame Busqueda
+    inicio.setVisible(true);
+    
+    // Cerrar el JFrame actual (Inicio)
+    this.dispose();
+    }//GEN-LAST:event_Inicio_btnMouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registrarse().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField CContraseña_txt;
     private javax.swing.JButton IngresarGoogle_btn;
+    private javax.swing.JLabel Inicio_btn;
     private javax.swing.JPasswordField contraseña_txt;
     private javax.swing.JTextField correo_txt;
-    private javax.swing.JButton ingresar_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -332,5 +341,6 @@ public class Registrarse extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField nombre_txt;
+    private javax.swing.JButton registrar_btn;
     // End of variables declaration//GEN-END:variables
 }

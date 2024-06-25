@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.awt.Graphics;
 import javax.swing.BorderFactory;
 import sistemadevuelos.InicioSesion.RoundedCornerBorder;
+import sistemadevuelos.Home.Inicio;
 /**
  *
  * @author ACER
@@ -20,6 +21,8 @@ public class IniciarSesion extends javax.swing.JFrame {
      */
     public IniciarSesion() {
         initComponents();
+        //Centrar el formulario
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -36,7 +39,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        email_txt = new javax.swing.JTextField();
+        correo_txt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         contraseña_txt = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
@@ -49,10 +52,12 @@ public class IniciarSesion extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        Inicio_btn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1500, 1500));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1366, 984));
         jPanel1.setVerifyInputWhenFocusTarget(false);
 
@@ -67,16 +72,16 @@ public class IniciarSesion extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Ingrese su correo electrónico:");
 
-        email_txt.setColumns(1);
-        email_txt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        email_txt.setForeground(new java.awt.Color(153, 153, 153));
-        email_txt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        email_txt.setText("nombre@gmail.com");
-        email_txt.setSelectedTextColor(new java.awt.Color(38, 117, 191));
-        email_txt.setBorder(new RoundedCornerBorder(8));
-        email_txt.addActionListener(new java.awt.event.ActionListener() {
+        correo_txt.setColumns(1);
+        correo_txt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        correo_txt.setForeground(new java.awt.Color(153, 153, 153));
+        correo_txt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        correo_txt.setText("nombre@gmail.com");
+        correo_txt.setSelectedTextColor(new java.awt.Color(38, 117, 191));
+        correo_txt.setBorder(new RoundedCornerBorder(8));
+        correo_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                email_txtActionPerformed(evt);
+                correo_txtActionPerformed(evt);
             }
         });
 
@@ -145,7 +150,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                                 .addComponent(jLabel4))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(email_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -183,7 +188,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(email_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -210,6 +215,13 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         jLabel9.setText("©2024");
 
+        Inicio_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/VOLANDO.png"))); // NOI18N
+        Inicio_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Inicio_btnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -217,18 +229,25 @@ public class IniciarSesion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
+                        .addContainerGap()
+                        .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(579, 579, 579)
                         .addComponent(jLabel9)))
-                .addContainerGap(462, Short.MAX_VALUE))
+                .addContainerGap(433, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -240,22 +259,23 @@ public class IniciarSesion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1366, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1500, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1500, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void email_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_txtActionPerformed
+    private void correo_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correo_txtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_email_txtActionPerformed
+    }//GEN-LAST:event_correo_txtActionPerformed
 
     private void ingresar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_btnActionPerformed
-        // TODO add your handling code here:
+        Consultas con = new Consultas();
+        con.AccesoUsuario(correo_txt.getText(), contraseña_txt.getPassword());
     }//GEN-LAST:event_ingresar_btnActionPerformed
 
     private void IngresarGoogle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarGoogle_btnActionPerformed
@@ -266,45 +286,27 @@ public class IniciarSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_contraseña_txtActionPerformed
 
+    private void Inicio_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inicio_btnMouseClicked
+    //Para volver al inicio haciendo click en el logo
+    Inicio inicio = new Inicio();
+    
+    // Hacer visible el JFrame Busqueda
+    inicio.setVisible(true);
+    
+    // Cerrar el JFrame actual (Inicio)
+    this.dispose();
+    }//GEN-LAST:event_Inicio_btnMouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IniciarSesion().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton IngresarGoogle_btn;
+    private javax.swing.JLabel Inicio_btn;
     private javax.swing.JPasswordField contraseña_txt;
-    private javax.swing.JTextField email_txt;
+    private javax.swing.JTextField correo_txt;
     private javax.swing.JButton ingresar_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
