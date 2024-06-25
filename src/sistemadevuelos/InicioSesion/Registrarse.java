@@ -26,48 +26,254 @@ public class Registrarse extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        correo_txt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        nombre_txt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        contraseña_txt = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        CContraseña_txt = new javax.swing.JPasswordField();
+        ingresar_btn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        IngresarGoogle_btn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
 
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(1336, 1176));
+
+        jLabel10.setText("©2024");
+
+        jPanel2.setBackground(new java.awt.Color(37, 150, 190));
+        jPanel2.setVerifyInputWhenFocusTarget(false);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Registrarse");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setText("Ingrese su correo electrónico para registrarse:");
+
+        correo_txt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        correo_txt.setForeground(new java.awt.Color(153, 153, 153));
+        correo_txt.setText("nombre@gmail.com");
+        correo_txt.setPreferredSize(new java.awt.Dimension(28, 40));
+        correo_txt.setRequestFocusEnabled(false);
+        correo_txt.setBorder(new RoundedCornerBorder(8));
+        correo_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correo_txtActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel3.setText("Ingrese su nombre completo:");
+
+        nombre_txt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        nombre_txt.setForeground(new java.awt.Color(153, 153, 153));
+        nombre_txt.setText("Nombre y apellido");
+        nombre_txt.setBorder(new RoundedCornerBorder(8));
+        nombre_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre_txtActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setText("Ingrese su contraseña:");
+
+        contraseña_txt.setText("jPasswordField1");
+        contraseña_txt.setBorder(new RoundedCornerBorder(8));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel5.setText("Confirmar contraseña:");
+
+        CContraseña_txt.setText("jPasswordField2");
+        CContraseña_txt.setBorder(new RoundedCornerBorder(8));
+
+        ingresar_btn.setBackground(new java.awt.Color(0, 0, 0));
+        ingresar_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        ingresar_btn.setForeground(new java.awt.Color(255, 255, 255));
+        ingresar_btn.setText("Ingresa con e-mail");
+        ingresar_btn.setBorder(new RoundedCornerBorder(8));
+        ingresar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresar_btnActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("o continuar con");
+
+        IngresarGoogle_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        IngresarGoogle_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/Google.jpg"))); // NOI18N
+        IngresarGoogle_btn.setText("oogle");
+        IngresarGoogle_btn.setBorder(new RoundedCornerBorder(8));
+        IngresarGoogle_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IngresarGoogle_btnActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Al hacer clic en Continuar, acepta nuestros ");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Términos de servicio y Política de privacidad");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/b4d0ff782c811c8f946a3212800f69de-diseno-de-plantillas-de-boletos-de-avion_1-removebg-preview.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ingresar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CContraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(IngresarGoogle_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(64, 64, 64)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel7)))))))
+                .addContainerGap(111, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CContraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ingresar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(IngresarGoogle_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel9)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(265, 265, 265)
-                .addComponent(jLabel1)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGap(308, 308, 308)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(427, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(642, 642, 642))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        jScrollPane1.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1336, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1182, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void correo_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correo_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correo_txtActionPerformed
+
+    private void nombre_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre_txtActionPerformed
+
+    private void ingresar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingresar_btnActionPerformed
+
+    private void IngresarGoogle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarGoogle_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IngresarGoogle_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +311,26 @@ public class Registrarse extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField CContraseña_txt;
+    private javax.swing.JButton IngresarGoogle_btn;
+    private javax.swing.JPasswordField contraseña_txt;
+    private javax.swing.JTextField correo_txt;
+    private javax.swing.JButton ingresar_btn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField nombre_txt;
     // End of variables declaration//GEN-END:variables
 }
