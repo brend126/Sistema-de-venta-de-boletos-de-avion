@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistemadevuelos.Home;
-
+import sistemadevuelos.FondoPanel;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -380,9 +380,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -460,40 +458,4 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-}
-
-
-
-// Clase para poner el fondo
-class FondoPanel extends JPanel {
-    private Image imagen;
-
-    @Override
-    public void paintComponent(Graphics g) {
-        if (imagen == null) {
-            imagen = new ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/fondo.jpg")).getImage();
-        }
-        
-        int anchoImagen = imagen.getWidth(null);
-        int altoImagen = imagen.getHeight(null);
-        int anchoPanel = getWidth();
-        int altoPanel = getHeight();
-        
-        double escalaAncho = 1.0 * anchoPanel / anchoImagen;
-        double escalaAlto = 1.0 * altoPanel / altoImagen;
-        double escala = Math.max(escalaAncho, escalaAlto);
-        
-        int nuevoAncho = (int) (escala * anchoImagen);
-        int nuevoAlto = (int) (escala * altoImagen);
-        
-        int x = (anchoPanel - nuevoAncho) / 2;
-        int y = (altoPanel - nuevoAlto) / 2;
-        
-        g.drawImage(imagen, x, y, nuevoAncho, nuevoAlto, this);
-        
-        setOpaque(false);  // Esto asegura que el fondo del panel sea transparente
-        
-        // Pintar los componentes después de la imagen de fondo
-        super.paintComponent(g);
-    }
 }

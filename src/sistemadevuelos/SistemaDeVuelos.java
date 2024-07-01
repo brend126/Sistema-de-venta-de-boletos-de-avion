@@ -9,6 +9,7 @@ import sistemadevuelos.Home.Inicio;
 import sistemadevuelos.conexion.ConexionDB;
 import java.sql.Connection;
 import java.sql.SQLException;
+import sistemadevuelos.BusquedaVuelos.Busqueda;
 
 
 /**
@@ -27,6 +28,11 @@ public class SistemaDeVuelos {
         i.setVisible(true);
         
          i.setLocationRelativeTo(null);
+         
+        // para el fondo
+        Busqueda b = new Busqueda();
+        
+       
         
     }
     
