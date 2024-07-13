@@ -4,7 +4,9 @@
  */
 package sistemadevuelos.InicioSesion;
 import javax.swing.JOptionPane;
+import sistemadevuelos.BusquedaVuelos.Busqueda;
 import sistemadevuelos.Home.Inicio;
+import sistemadevuelos.ReservaPasaje.DatosPasajero;
 /**
  *
  * @author ACER
@@ -53,11 +55,13 @@ public class Registrarse extends javax.swing.JFrame {
         Inicio_btn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setPreferredSize(new java.awt.Dimension(1260, 1172));
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1260, 1172));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(1336, 1176));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1260, 1172));
 
         jLabel10.setText("©2024");
 
@@ -76,6 +80,11 @@ public class Registrarse extends javax.swing.JFrame {
         correo_txt.setPreferredSize(new java.awt.Dimension(28, 40));
         correo_txt.setRequestFocusEnabled(false);
         correo_txt.setBorder(new RoundedCornerBorder(8));
+        correo_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                correo_txtMouseClicked(evt);
+            }
+        });
         correo_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 correo_txtActionPerformed(evt);
@@ -89,6 +98,11 @@ public class Registrarse extends javax.swing.JFrame {
         nombre_txt.setForeground(new java.awt.Color(153, 153, 153));
         nombre_txt.setText("Nombre y apellido");
         nombre_txt.setBorder(new RoundedCornerBorder(8));
+        nombre_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombre_txtMouseClicked(evt);
+            }
+        });
         nombre_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombre_txtActionPerformed(evt);
@@ -100,12 +114,22 @@ public class Registrarse extends javax.swing.JFrame {
 
         contraseña_txt.setText("jPasswordField1");
         contraseña_txt.setBorder(new RoundedCornerBorder(8));
+        contraseña_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contraseña_txtMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setText("Confirmar contraseña:");
 
         CContraseña_txt.setText("jPasswordField2");
         CContraseña_txt.setBorder(new RoundedCornerBorder(8));
+        CContraseña_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CContraseña_txtMouseClicked(evt);
+            }
+        });
 
         registrar_btn.setBackground(new java.awt.Color(0, 0, 0));
         registrar_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -244,7 +268,7 @@ public class Registrarse extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(620, 620, 620)
                         .addComponent(jLabel10)))
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +282,7 @@ public class Registrarse extends javax.swing.JFrame {
                         .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -269,7 +293,7 @@ public class Registrarse extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1365, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,8 +324,28 @@ public class Registrarse extends javax.swing.JFrame {
         return;
     }
     
-    Consultas con = new Consultas();
-    con.guardarUsuarios(correo, nombre, contraseña, confirmacionContraseña);
+    // Verificar si el correo tiene un formato válido
+    if (!correo.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+        JOptionPane.showMessageDialog(null, "Por favor, ingresa un correo electrónico válido.");
+        return;
+    }
+    
+    // Realizar la consulta para validar el inicio de sesión
+    Consultas consultas = new Consultas();
+    int idUsuario = consultas.AccesoUsuario(correo, contraseña);
+
+    if (idUsuario != 0) {
+        // Establecer el ID del usuario actual en la sesión
+        SessionManager.setIdUsuarioActual(idUsuario);
+
+        // Abrir la ventana de datos del pasajero u otra ventana principal
+        DatosPasajero datos = new DatosPasajero();
+        datos.setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
+    }
+
     }//GEN-LAST:event_registrar_btnActionPerformed
 
     private void IngresarGoogle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarGoogle_btnActionPerformed
@@ -317,6 +361,22 @@ public class Registrarse extends javax.swing.JFrame {
     // Cerrar el JFrame actual (Inicio)
     this.dispose();
     }//GEN-LAST:event_Inicio_btnMouseClicked
+
+    private void correo_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_txtMouseClicked
+        correo_txt.setText("");
+    }//GEN-LAST:event_correo_txtMouseClicked
+
+    private void nombre_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_txtMouseClicked
+        nombre_txt.setText("");
+    }//GEN-LAST:event_nombre_txtMouseClicked
+
+    private void contraseña_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseña_txtMouseClicked
+        contraseña_txt.setText("");
+    }//GEN-LAST:event_contraseña_txtMouseClicked
+
+    private void CContraseña_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CContraseña_txtMouseClicked
+        CContraseña_txt.setText("");
+    }//GEN-LAST:event_CContraseña_txtMouseClicked
 
     /**
      * @param args the command line arguments

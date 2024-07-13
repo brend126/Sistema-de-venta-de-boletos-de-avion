@@ -59,7 +59,6 @@ public class Busqueda extends javax.swing.JFrame {
         origen_txt = new javax.swing.JTextField();
         destino_txt = new javax.swing.JTextField();
         cantidad_txt = new javax.swing.JTextField();
-        FechaDeVuelta = new com.toedter.calendar.JDateChooser();
         FechaDeIda = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -96,6 +95,11 @@ public class Busqueda extends javax.swing.JFrame {
         origen_txt.setForeground(java.awt.Color.darkGray);
         origen_txt.setText("Origen");
         origen_txt.setBorder(new RoundedCornerBorder(8));
+        origen_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                origen_txtMouseClicked(evt);
+            }
+        });
         origen_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 origen_txtActionPerformed(evt);
@@ -105,38 +109,31 @@ public class Busqueda extends javax.swing.JFrame {
         destino_txt.setForeground(java.awt.Color.darkGray);
         destino_txt.setText("Destino");
         destino_txt.setBorder(new RoundedCornerBorder(8));
+        destino_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                destino_txtMouseClicked(evt);
+            }
+        });
+        destino_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                destino_txtActionPerformed(evt);
+            }
+        });
 
         cantidad_txt.setForeground(new java.awt.Color(102, 102, 102));
         cantidad_txt.setText("Cantidad de pasajeros");
         destino_txt.setBorder(new RoundedCornerBorder(8));
+        cantidad_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cantidad_txtMouseClicked(evt);
+            }
+        });
         cantidad_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidad_txtActionPerformed(evt);
             }
         });
         cantidad_txt.setBorder(new RoundedCornerBorder(8));
-
-        JTextField dateTextFieldVuelta = (JTextField) FechaDeVuelta.getDateEditor().getUiComponent();
-        dateTextFieldVuelta.setText("Fecha de vuelta");
-        dateTextFieldVuelta.setForeground(Color.DARK_GRAY);
-
-        dateTextFieldVuelta.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                if (dateTextFieldVuelta.getText().equals("Fecha de vuelta")) {
-                    dateTextFieldVuelta.setText("");
-                    dateTextFieldVuelta.setForeground(Color.BLACK);
-                }
-            }
-
-            @Override
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                if (dateTextFieldVuelta.getText().isEmpty()) {
-                    dateTextFieldVuelta.setText("Seleccione una fecha");
-                    dateTextFieldVuelta.setForeground(Color.DARK_GRAY);
-                }
-            }
-        });
 
         JTextField dateTextField = (JTextField) FechaDeIda.getDateEditor().getUiComponent();
         dateTextField.setText("Fecha de ida");
@@ -166,33 +163,29 @@ public class Busqueda extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(origen_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(destino_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(FechaDeIda, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(FechaDeVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(cantidad_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(origen_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(destino_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(FechaDeIda, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(cantidad_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buscar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FechaDeVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(origen_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(destino_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buscar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cantidad_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(FechaDeIda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(origen_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(destino_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buscar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cantidad_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FechaDeIda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -219,11 +212,9 @@ public class Busqueda extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(434, 434, 434))))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addGap(102, 102, 102))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +297,7 @@ public class Busqueda extends javax.swing.JFrame {
     String origen = origen_txt.getText();
     String destino = destino_txt.getText();
     Date fechaDeIda = FechaDeIda.getDate();
-    Date fechaDeVuelta = FechaDeVuelta.getDate();
+    
     int cantidadPasajeros = Integer.parseInt(cantidad_txt.getText());
     
     // Validación básica
@@ -318,12 +309,12 @@ public class Busqueda extends javax.swing.JFrame {
     // Convertir fechas a Strings formateados
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     String fechaDeIdaFormateada = sdf.format(fechaDeIda);
-    String fechaDeVueltaFormateada = (fechaDeVuelta != null) ? sdf.format(fechaDeVuelta) : null;
+    
     
     // Crear instancia de VuelosDisponibles
-    VuelosDisponibles vuelosdisponibles = new VuelosDisponibles(origen, destino, fechaDeIdaFormateada, fechaDeVueltaFormateada, String.valueOf(cantidadPasajeros));
+    VuelosDisponibles vuelosdisponibles = new VuelosDisponibles(origen, destino, fechaDeIdaFormateada, String.valueOf(cantidadPasajeros));
     vuelosdisponibles.setVisible(true);
-
+    dispose();
     
     }//GEN-LAST:event_buscar_btnActionPerformed
 
@@ -331,6 +322,24 @@ public class Busqueda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_origen_txtActionPerformed
 
+    private void destino_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destino_txtActionPerformed
+         
+    }//GEN-LAST:event_destino_txtActionPerformed
+
+    private void destino_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_destino_txtMouseClicked
+         destino_txt.setText("");
+    }//GEN-LAST:event_destino_txtMouseClicked
+
+    private void origen_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_origen_txtMouseClicked
+         origen_txt.setText("");
+    }//GEN-LAST:event_origen_txtMouseClicked
+
+    private void cantidad_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cantidad_txtMouseClicked
+         cantidad_txt.setText("");
+    }//GEN-LAST:event_cantidad_txtMouseClicked
+
+  
+  
     /**
      * @param args the command line arguments
      */
@@ -338,7 +347,6 @@ public class Busqueda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaDeIda;
-    private com.toedter.calendar.JDateChooser FechaDeVuelta;
     private javax.swing.JLabel Inicio_btn;
     private javax.swing.JButton buscar_btn;
     private javax.swing.JTextField cantidad_txt;
