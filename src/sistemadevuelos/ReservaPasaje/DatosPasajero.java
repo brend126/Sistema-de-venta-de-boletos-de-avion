@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistemadevuelos.ReservaPasaje;
-
+import com.toedter.calendar.JDateChooser;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import java.text.SimpleDateFormat;
@@ -14,7 +14,7 @@ import sistemadevuelos.InicioSesion.FlightDetails;
 import sistemadevuelos.InicioSesion.RoundedCornerBorder;
 import sistemadevuelos.InicioSesion.SessionManager;
 import sistemadevuelos.conexion.ConexionDB;
-
+import sistemadevuelos.ReservaPasaje.ReservarAsientos;
 /**
  *
  * @author ACER
@@ -134,7 +134,7 @@ private Consultas consultas;
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("+Información personal");
+        jLabel11.setText("+Información de contacto");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,7 +156,7 @@ private Consultas consultas;
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("+Información personal");
+        jLabel15.setText("+Información de emergencia");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,6 +179,11 @@ private Consultas consultas;
         SeleccionarAsientosbtn.setBackground(new java.awt.Color(174, 82, 21));
         SeleccionarAsientosbtn.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionarAsientosbtn.setText("Siguiente");
+        SeleccionarAsientosbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SeleccionarAsientosbtnMouseClicked(evt);
+            }
+        });
         SeleccionarAsientosbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarAsientosbtnActionPerformed(evt);
@@ -345,6 +350,14 @@ private Consultas consultas;
 
     private void SeleccionarAsientosbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarAsientosbtnActionPerformed
         guardarDatosPasajero();
+        //Para volver al inicio haciendo click en el logo
+        ReservarAsientos r = new ReservarAsientos();
+
+        // Hacer visible el JFrame Busqueda
+        r.setVisible(true);
+
+        // Cerrar el JFrame actual (Inicio)
+        this.dispose();
     }//GEN-LAST:event_SeleccionarAsientosbtnActionPerformed
 
      private int getIdUsuarioActual() {
@@ -420,6 +433,10 @@ private void limpiarCampos() {
     private void nombre_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_txtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombre_txtActionPerformed
+
+    private void SeleccionarAsientosbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleccionarAsientosbtnMouseClicked
+        
+    }//GEN-LAST:event_SeleccionarAsientosbtnMouseClicked
 
     /**
      * @param args the command line arguments

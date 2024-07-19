@@ -18,6 +18,7 @@ import sistemadevuelos.FondoPanel;
 import sistemadevuelos.Home.Inicio;
 import sistemadevuelos.InicioSesion.FlightDetails;
 import sistemadevuelos.InicioSesion.IniciarSesion;
+import sistemadevuelos.BusquedaVuelos.VuelosDisponibles;
 
 /**
  *
@@ -72,7 +73,6 @@ public class DetalleVuelo extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new FondoPanel();
-        Inicio_btn = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -87,17 +87,11 @@ public class DetalleVuelo extends javax.swing.JFrame {
         Puerta = new javax.swing.JLabel();
         continuar_btn = new javax.swing.JButton();
         Aerolinea = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1260, 986));
-
-        Inicio_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/VOLANDO.png"))); // NOI18N
-        Inicio_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Inicio_btnMouseClicked(evt);
-            }
-        });
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(1000, 847));
@@ -218,6 +212,17 @@ public class DetalleVuelo extends javax.swing.JFrame {
                         .addGap(39, 39, 39))))
         );
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 100)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 202, 85));
+        jLabel2.setText("←");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -225,18 +230,17 @@ public class DetalleVuelo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1096, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1096, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -258,17 +262,6 @@ public class DetalleVuelo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Inicio_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inicio_btnMouseClicked
-        //Para volver al inicio haciendo click en el logo
-        Inicio inicio = new Inicio();
-
-        // Hacer visible el JFrame Busqueda
-        inicio.setVisible(true);
-
-        // Cerrar el JFrame actual (Inicio)
-        this.dispose();
-    }//GEN-LAST:event_Inicio_btnMouseClicked
-
     private void continuar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuar_btnActionPerformed
        //Para volver al inicio haciendo click en el logo
         IniciarSesion inicio = new IniciarSesion();
@@ -279,6 +272,17 @@ public class DetalleVuelo extends javax.swing.JFrame {
         // Cerrar el JFrame actual (Inicio)
         this.dispose();
     }//GEN-LAST:event_continuar_btnActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        //Para volver al inicio haciendo click en el logo
+        VuelosDisponibles vuelos = new VuelosDisponibles();
+
+        // Hacer visible el JFrame Busqueda
+        vuelos.setVisible(true);
+
+        // Cerrar el JFrame actual (Inicio)
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -291,7 +295,6 @@ public class DetalleVuelo extends javax.swing.JFrame {
     private javax.swing.JLabel FechaDePartida;
     private javax.swing.JLabel HorarioDeLlegada;
     private javax.swing.JLabel HorarioDeSalida;
-    private javax.swing.JLabel Inicio_btn;
     private javax.swing.JLabel NumeroDeVuelo;
     private javax.swing.JLabel Origen;
     private javax.swing.JLabel Pasajes;
@@ -299,6 +302,7 @@ public class DetalleVuelo extends javax.swing.JFrame {
     private javax.swing.JLabel Puerta;
     private javax.swing.JButton continuar_btn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

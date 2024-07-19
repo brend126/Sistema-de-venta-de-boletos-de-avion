@@ -19,7 +19,9 @@ import javax.swing.event.ListSelectionListener;
 public class VuelosDisponibles extends JFrame {
 
     private FondoPanel fondo3 = new FondoPanel();
-   
+   public VuelosDisponibles(){
+       
+   }
 
   // Constructor para inicializar y mostrar los resultados de búsqueda
     public VuelosDisponibles(String origen, String destino, String fechaDeIda, String pasajeros) {
@@ -85,6 +87,8 @@ public class VuelosDisponibles extends JFrame {
             });
         }
     }
+
+   
 
     private boolean llenarTabla(String origen, String destino, String fechaDeIda, String pasajeros, DefaultTableModel model) throws SQLException {
         String query = "SELECT Origen, Destino, FechaDeIda, Precio, HorarioSalida, HorarioLlegada " +
