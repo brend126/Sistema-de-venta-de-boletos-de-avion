@@ -130,13 +130,10 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="434" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -172,18 +169,16 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="origen_txt" min="-2" pref="170" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="destino_txt" min="-2" pref="170" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                              <Component id="FechaDeIda" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="FechaDeVuelta" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="cantidad_txt" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="origen_txt" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace pref="32" max="32767" attributes="0"/>
+                              <Component id="destino_txt" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="FechaDeIda" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="cantidad_txt" min="-2" pref="220" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="buscar_btn" min="-2" pref="119" max="-2" attributes="0"/>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="25" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -191,19 +186,16 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="40" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="FechaDeVuelta" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="origen_txt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                          <Component id="destino_txt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="buscar_btn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="cantidad_txt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="FechaDeIda" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="origen_txt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="destino_txt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="buscar_btn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="cantidad_txt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="FechaDeIda" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
@@ -230,6 +222,7 @@
                         <Property name="text" type="java.lang.String" value="Origen"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="origen_txtMouseClicked"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="origen_txtActionPerformed"/>
                       </Events>
                       <AuxValues>
@@ -243,6 +236,10 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Destino"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="destino_txtMouseClicked"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="destino_txtActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="destino_txt.setBorder(new RoundedCornerBorder(8));"/>
                       </AuxValues>
@@ -255,16 +252,12 @@
                         <Property name="text" type="java.lang.String" value="Cantidad de pasajeros"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cantidad_txtMouseClicked"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidad_txtActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="destino_txt.setBorder(new RoundedCornerBorder(8));"/>
                         <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="cantidad_txt.setBorder(new RoundedCornerBorder(8));"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="FechaDeVuelta">
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextField dateTextFieldVuelta = (JTextField) FechaDeVuelta.getDateEditor().getUiComponent();&#xa;dateTextFieldVuelta.setText(&quot;Fecha de vuelta&quot;);&#xa;dateTextFieldVuelta.setForeground(Color.DARK_GRAY);&#xa;&#xa;dateTextFieldVuelta.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    @Override&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (dateTextFieldVuelta.getText().equals(&quot;Fecha de vuelta&quot;)) {&#xa;            dateTextFieldVuelta.setText(&quot;&quot;);&#xa;            dateTextFieldVuelta.setForeground(Color.BLACK);&#xa;        }&#xa;    }&#xa;&#xa;    @Override&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (dateTextFieldVuelta.getText().isEmpty()) {&#xa;            dateTextFieldVuelta.setText(&quot;Seleccione una fecha&quot;);&#xa;            dateTextFieldVuelta.setForeground(Color.DARK_GRAY);&#xa;        }&#xa;    }&#xa;});"/>
                       </AuxValues>
                     </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="FechaDeIda">

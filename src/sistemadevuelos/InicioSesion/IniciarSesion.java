@@ -8,9 +8,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import sistemadevuelos.BusquedaVuelos.Busqueda;
 import sistemadevuelos.InicioSesion.RoundedCornerBorder;
 import sistemadevuelos.Home.Inicio;
 import sistemadevuelos.InicioSesion.Recuperacion.RecuperacionContraseñaFase1;
+import sistemadevuelos.ReservaPasaje.DatosPasajero;
 /**
  *
  * @author ACER
@@ -50,14 +53,14 @@ public class IniciarSesion extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         IngresarGoogle_btn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         Inicio_btn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1260, 986));
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1502, 1022));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1260, 986));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setVerifyInputWhenFocusTarget(false);
@@ -80,6 +83,11 @@ public class IniciarSesion extends javax.swing.JFrame {
         correo_txt.setText("nombre@gmail.com");
         correo_txt.setSelectedTextColor(new java.awt.Color(38, 117, 191));
         correo_txt.setBorder(new RoundedCornerBorder(8));
+        correo_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                correo_txtMouseClicked(evt);
+            }
+        });
         correo_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 correo_txtActionPerformed(evt);
@@ -92,6 +100,11 @@ public class IniciarSesion extends javax.swing.JFrame {
         contraseña_txt.setForeground(new java.awt.Color(153, 153, 153));
         contraseña_txt.setText("jPasswordField1");
         contraseña_txt.setBorder(new RoundedCornerBorder(8));
+        contraseña_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contraseña_txtMouseClicked(evt);
+            }
+        });
         contraseña_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contraseña_txtActionPerformed(evt);
@@ -132,13 +145,14 @@ public class IniciarSesion extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Al hacer clic en Continuar, acepta nuestros ");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Términos de servicio y Política de privacidad");
+        jLabel7.setText("¿No tienes cuenta? Regístrate aquí");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/b4d0ff782c811c8f946a3212800f69de-diseno-de-plantillas-de-boletos-de-avion_1-removebg-preview.png"))); // NOI18N
 
@@ -160,11 +174,6 @@ public class IniciarSesion extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,8 +192,13 @@ public class IniciarSesion extends javax.swing.JFrame {
                         .addGap(211, 211, 211))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(103, 103, 103))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(103, 103, 103))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(151, 151, 151))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +216,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(ingresar_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addComponent(ingresar_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -210,11 +224,9 @@ public class IniciarSesion extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(IngresarGoogle_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addGap(37, 37, 37)
+                .addGap(57, 57, 57)
                 .addComponent(jLabel8)
                 .addGap(65, 65, 65))
         );
@@ -242,7 +254,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(579, 579, 579)
                         .addComponent(jLabel9)))
-                .addContainerGap(433, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,8 +292,30 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_correo_txtActionPerformed
 
     private void ingresar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_btnActionPerformed
-        Consultas con = new Consultas();
-        con.AccesoUsuario(correo_txt.getText(), contraseña_txt.getPassword());
+         String correo = correo_txt.getText();
+    char[] contraseña = contraseña_txt.getPassword();
+
+    // Validación de campos
+    if (correo.isEmpty() || contraseña.length == 0) {
+        JOptionPane.showMessageDialog(this, "Por favor ingresa correo y contraseña válidos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Realizar la consulta para validar el inicio de sesión
+    Consultas consultas = new Consultas();
+    int idUsuario = consultas.AccesoUsuario(correo, contraseña);
+
+    if (idUsuario != 0) {
+        // Establecer el ID del usuario actual en la sesión
+        SessionManager.setIdUsuarioActual(idUsuario);
+
+        // Abrir la ventana de datos del pasajero u otra ventana principal
+        DatosPasajero datos = new DatosPasajero();
+        datos.setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_ingresar_btnActionPerformed
 
     private void IngresarGoogle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarGoogle_btnActionPerformed
@@ -314,6 +348,26 @@ public class IniciarSesion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       //Para volver al inicio haciendo click en el logo
+    Registrarse registrarse = new Registrarse();
+    
+    // Hacer visible el JFrame Busqueda
+    registrarse.setVisible(true);
+    
+    // Cerrar el JFrame actual (Inicio)
+    this.dispose();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void correo_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_txtMouseClicked
+        correo_txt.setText("");
+    }//GEN-LAST:event_correo_txtMouseClicked
+
+    private void contraseña_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseña_txtMouseClicked
+        contraseña_txt.setText("");
+    }//GEN-LAST:event_contraseña_txtMouseClicked
+
+
     /**
      * @param args the command line arguments
      */
@@ -330,7 +384,6 @@ public class IniciarSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
