@@ -15,10 +15,7 @@ import sistemadevuelos.InicioSesion.RoundedCornerBorder;
 import sistemadevuelos.InicioSesion.SessionManager;
 import sistemadevuelos.conexion.ConexionDB;
 import sistemadevuelos.ReservaPasaje.ReservarAsientos;
-/**
- *
- * @author ACER
- */
+
 public class DatosPasajero extends javax.swing.JFrame {
 private Connection conn;
 private Consultas consultas;
@@ -350,13 +347,13 @@ private Consultas consultas;
 
     private void SeleccionarAsientosbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarAsientosbtnActionPerformed
         guardarDatosPasajero();
-        //Para volver al inicio haciendo click en el logo
+        //Para volver a reservar asientos haciendo click en el logo
         ReservarAsientos r = new ReservarAsientos();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame 
         r.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
+        // Cerrar el JFrame actual 
         this.dispose();
     }//GEN-LAST:event_SeleccionarAsientosbtnActionPerformed
 

@@ -13,24 +13,19 @@ import java.sql.SQLException;
 import sistemadevuelos.BusquedaVuelos.Busqueda;
 
 
-/**
- *
- * @author Brenda
- */
+
 public class SistemaDeVuelos {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // para el fondo
+        // para el fondo de inicio
         Inicio i = new Inicio();
         
         i.setVisible(true);
         
          i.setLocationRelativeTo(null);
          
-        // para el fondo
+        // para el fondo de busqueda
         Busqueda b = new Busqueda();
         
        

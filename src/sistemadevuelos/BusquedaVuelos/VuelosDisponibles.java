@@ -200,7 +200,7 @@ public class VuelosDisponibles extends JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setText("Vuelos disponibles:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -250,13 +250,13 @@ public class VuelosDisponibles extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        //Para volver al inicio haciendo click en el logo
+        //Para volver a busqueda haciendo click en el logo
         Busqueda busqueda = new Busqueda();
 
         // Hacer visible el JFrame Busqueda
         busqueda.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
+        // Cerrar el JFrame actual
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 

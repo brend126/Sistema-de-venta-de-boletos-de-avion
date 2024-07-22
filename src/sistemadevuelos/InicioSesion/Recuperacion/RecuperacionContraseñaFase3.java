@@ -7,15 +7,10 @@ package sistemadevuelos.InicioSesion.Recuperacion;
 import sistemadevuelos.Home.Inicio;
 import sistemadevuelos.InicioSesion.RoundedCornerBorder;
 
-/**
- *
- * @author ACER
- */
+
 public class RecuperacionContraseñaFase3 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RecuperaciónContraseñaFase3
-     */
+    
     public RecuperacionContraseñaFase3() {
         initComponents();
     }
@@ -47,7 +42,6 @@ public class RecuperacionContraseñaFase3 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1368, 986));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1368, 986));
@@ -67,11 +61,9 @@ public class RecuperacionContraseñaFase3 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Recupera tu contraseña");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("o continuar con");
 
-        IngresarGoogle_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         IngresarGoogle_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/Google.jpg"))); // NOI18N
         IngresarGoogle_btn.setText("oogle");
         IngresarGoogle_btn.setBorder(new RoundedCornerBorder(8));
@@ -84,7 +76,6 @@ public class RecuperacionContraseñaFase3 extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/b4d0ff782c811c8f946a3212800f69de-diseno-de-plantillas-de-boletos-de-avion_1-removebg-preview.png"))); // NOI18N
 
         IniciarSesion_btn.setBackground(new java.awt.Color(0, 0, 0));
-        IniciarSesion_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         IniciarSesion_btn.setForeground(new java.awt.Color(255, 255, 255));
         IniciarSesion_btn.setText("Iniciar Sesión");
         IniciarSesion_btn.setBorder(new RoundedCornerBorder(8));
@@ -94,13 +85,13 @@ public class RecuperacionContraseñaFase3 extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Ingrese su nueva contraseña:");
 
         contraseña_txt.setText("jPasswordField1");
         contraseña_txt.setBorder(new RoundedCornerBorder(8));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Confirmar su nueva contraseña:");
 
         CContraseña_txt.setText("jPasswordField2");
@@ -147,12 +138,12 @@ public class RecuperacionContraseñaFase3 extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CContraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(CContraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(IniciarSesion_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +217,7 @@ public class RecuperacionContraseñaFase3 extends javax.swing.JFrame {
         //Para volver al inicio haciendo click en el logo
         Inicio inicio = new Inicio();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame 
         inicio.setVisible(true);
 
         // Cerrar el JFrame actual (Inicio)

@@ -4,10 +4,7 @@
  */
 package sistemadevuelos.InicioSesion;
 
-/**
- *
- * @author ACER
- */
+
 public class FlightDetails {
     private static FlightDetails instance;
     private int cantidadPasajes;

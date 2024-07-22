@@ -4,10 +4,7 @@
  */
 package sistemadevuelos.InicioSesion;
 
-/**
- *
- * @author ACER
- */
+
 public class SessionManager {
     private static int idUsuarioActual = -1; // Inicialmente ningún usuario conectado
 

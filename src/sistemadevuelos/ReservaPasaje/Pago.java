@@ -4,15 +4,10 @@
  */
 package sistemadevuelos.ReservaPasaje;
 
-/**
- *
- * @author Brenda
- */
+
 public class Pago extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Pago
-     */
+    
     public Pago() {
         initComponents();
     }
@@ -35,7 +30,7 @@ public class Pago extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Elegi el metodo de pago que mas te guste:");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/paypal.png"))); // NOI18N
@@ -83,17 +78,18 @@ public class Pago extends javax.swing.JFrame {
                 .addGap(162, 162, 162))
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(146, 146, 146)
-                        .addComponent(jButton2)
-                        .addGap(168, 168, 168)
-                        .addComponent(jButton3)))
+                .addComponent(jButton1)
+                .addGap(146, 146, 146)
+                .addComponent(jButton2)
+                .addGap(168, 168, 168)
+                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(118, 118, 118))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,14 +111,14 @@ public class Pago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        //Para volver al inicio haciendo click en el logo
+        //Para volver a paypal haciendo click en el logo
         PagoPaypal pagopaypal = new PagoPaypal();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame 
         pagopaypal.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
-        this.dispose();        // TODO add your handling code here:
+        // Cerrar el JFrame actual 
+        this.dispose();       
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -130,36 +126,36 @@ public class Pago extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        //Para volver al inicio haciendo click en el logo
+        //Para volver a visa haciendo click en el logo
         PagoVisa pagovisa = new PagoVisa();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame 
         pagovisa.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
-        this.dispose();        // TODO add your handling code here:
+        // Cerrar el JFrame actual 
+        this.dispose();       
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        //Para volver al inicio haciendo click en el logo
+        //Para volver a mastercard haciendo click en el logo
         PagoMaster pagomaster = new PagoMaster();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame 
         pagomaster.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
-        this.dispose();        // TODO add your handling code here:
+        // Cerrar el JFrame actual 
+        this.dispose();    
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        //Para volver al inicio haciendo click en el logo
+        //Para volver a american haciendo click en el logo
         PagoAmerican pagoamerican = new PagoAmerican();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame 
         pagoamerican.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
-        this.dispose();        // TODO add your handling code here:
+        // Cerrar el JFrame actual 
+        this.dispose();        
     }//GEN-LAST:event_jButton4MouseClicked
 
     /**

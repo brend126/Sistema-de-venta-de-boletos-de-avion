@@ -9,10 +9,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-/**
- *
- * @author ACER
- */
+
 // Clase para poner el fondo
 public class FondoPanel extends JPanel {
     private Image imagen;

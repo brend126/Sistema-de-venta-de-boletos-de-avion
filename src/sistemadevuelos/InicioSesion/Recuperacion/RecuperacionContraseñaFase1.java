@@ -7,15 +7,10 @@ package sistemadevuelos.InicioSesion.Recuperacion;
 import sistemadevuelos.Home.Inicio;
 import sistemadevuelos.InicioSesion.RoundedCornerBorder;
 
-/**
- *
- * @author ACER
- */
+
 public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RecuperacionContraseñaFase1
-     */
+    
     public RecuperacionContraseñaFase1() {
         initComponents();
     }
@@ -45,7 +40,6 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 984));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1366, 984));
@@ -58,7 +52,7 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Recupera tu contraseña");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Ingrese su correo electrónico:");
 
         correo_txt.setColumns(1);
@@ -74,11 +68,9 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("o continuar con");
 
-        IngresarGoogle_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         IngresarGoogle_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/Google.jpg"))); // NOI18N
         IngresarGoogle_btn.setText("oogle");
         IngresarGoogle_btn.setBorder(new RoundedCornerBorder(8));
@@ -91,7 +83,6 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/b4d0ff782c811c8f946a3212800f69de-diseno-de-plantillas-de-boletos-de-avion_1-removebg-preview.png"))); // NOI18N
 
         enviarCodigo_btn.setBackground(new java.awt.Color(0, 0, 0));
-        enviarCodigo_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         enviarCodigo_btn.setForeground(new java.awt.Color(255, 255, 255));
         enviarCodigo_btn.setText("Recibir código");
         enviarCodigo_btn.setBorder(new RoundedCornerBorder(8));
@@ -140,9 +131,9 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(enviarCodigo_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(enviarCodigo_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -233,7 +224,7 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
         //Para volver al inicio haciendo click en el logo
         Inicio inicio = new Inicio();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame 
         inicio.setVisible(true);
 
         // Cerrar el JFrame actual (Inicio)

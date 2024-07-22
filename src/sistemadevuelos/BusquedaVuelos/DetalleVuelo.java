@@ -18,20 +18,15 @@ import sistemadevuelos.FondoPanel;
 import sistemadevuelos.Home.Inicio;
 import sistemadevuelos.InicioSesion.FlightDetails;
 import sistemadevuelos.InicioSesion.IniciarSesion;
-import sistemadevuelos.BusquedaVuelos.VuelosDisponibles;
 
-/**
- *
- * @author ACER
- */
+
+
 public class DetalleVuelo extends javax.swing.JFrame {
     //para el fondo
     FondoPanel fondo2 = new FondoPanel();
-    /**
-     * Creates new form DetalleVuelo
-     */
+    
      public DetalleVuelo(Object origen, Object destino, Object fechaDeIda, Object pasajeros, Object precio, Object horarioSalida, Object horarioLlegada) {
-        // Para el fondo
+     // Para el fondo
     this.setContentPane(fondo2);
     
     initComponents();
@@ -129,7 +124,6 @@ public class DetalleVuelo extends javax.swing.JFrame {
         Puerta.setText("Puerta:");
 
         continuar_btn.setBackground(new java.awt.Color(0, 0, 0));
-        continuar_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         continuar_btn.setForeground(new java.awt.Color(255, 255, 255));
         continuar_btn.setText("Continuar con la compra");
         continuar_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -266,22 +260,22 @@ public class DetalleVuelo extends javax.swing.JFrame {
        //Para volver al inicio haciendo click en el logo
         IniciarSesion inicio = new IniciarSesion();
 
-        // Hacer visible el JFrame Busqueda
+        // Hacer visible el JFrame inicio
         inicio.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
+        // Cerrar el JFrame actual 
         this.dispose();
     }//GEN-LAST:event_continuar_btnActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        //Para volver al inicio haciendo click en el logo
-        VuelosDisponibles vuelos = new VuelosDisponibles();
+        //Para volver a vuelos disponibles haciendo click en el logo
+        VuelosDisponibles v = new VuelosDisponibles();
 
-        // Hacer visible el JFrame Busqueda
-        vuelos.setVisible(true);
+        // Hacer visible el JFrame vuelos
+        v.setVisible(true);
 
-        // Cerrar el JFrame actual (Inicio)
-        this.dispose();
+        // Cerrar el JFrame actual
+        this.dispose();  
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**

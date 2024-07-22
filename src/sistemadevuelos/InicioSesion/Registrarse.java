@@ -7,15 +7,11 @@ import javax.swing.JOptionPane;
 import sistemadevuelos.BusquedaVuelos.Busqueda;
 import sistemadevuelos.Home.Inicio;
 import sistemadevuelos.ReservaPasaje.DatosPasajero;
-/**
- *
- * @author ACER
- */
+
+
 public class Registrarse extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Registrarse
-     */
+    
     public Registrarse() {
         initComponents();
         //Centrar el formulario
@@ -55,7 +51,6 @@ public class Registrarse extends javax.swing.JFrame {
         Inicio_btn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1260, 1172));
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1260, 1172));
 
@@ -71,7 +66,7 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Registrarse");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Ingrese su correo electrónico para registrarse:");
 
         correo_txt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -91,7 +86,7 @@ public class Registrarse extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Ingrese su nombre completo:");
 
         nombre_txt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -109,7 +104,7 @@ public class Registrarse extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Ingrese su contraseña:");
 
         contraseña_txt.setText("jPasswordField1");
@@ -120,7 +115,7 @@ public class Registrarse extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Confirmar contraseña:");
 
         CContraseña_txt.setText("jPasswordField2");
@@ -132,7 +127,6 @@ public class Registrarse extends javax.swing.JFrame {
         });
 
         registrar_btn.setBackground(new java.awt.Color(0, 0, 0));
-        registrar_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         registrar_btn.setForeground(new java.awt.Color(255, 255, 255));
         registrar_btn.setText("Registrar con e-mail");
         registrar_btn.setBorder(new RoundedCornerBorder(8));
@@ -142,11 +136,9 @@ public class Registrarse extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("o continuar con");
 
-        IngresarGoogle_btn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         IngresarGoogle_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/Google.jpg"))); // NOI18N
         IngresarGoogle_btn.setText("oogle");
         IngresarGoogle_btn.setBorder(new RoundedCornerBorder(8));
@@ -156,11 +148,11 @@ public class Registrarse extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Al hacer clic en Continuar, acepta nuestros ");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Términos de servicio y Política de privacidad");
 
@@ -216,20 +208,20 @@ public class Registrarse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(correo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CContraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(CContraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(registrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +260,7 @@ public class Registrarse extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(620, 620, 620)
                         .addComponent(jLabel10)))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +274,7 @@ public class Registrarse extends javax.swing.JFrame {
                         .addComponent(Inicio_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -355,10 +347,10 @@ public class Registrarse extends javax.swing.JFrame {
     private void Inicio_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inicio_btnMouseClicked
     Inicio inicio = new Inicio();
     
-    // Hacer visible el JFrame Busqueda
+    // Hacer visible el JFrame 
     inicio.setVisible(true);
     
-    // Cerrar el JFrame actual (Inicio)
+    // Cerrar el JFrame actual 
     this.dispose();
     }//GEN-LAST:event_Inicio_btnMouseClicked
 
