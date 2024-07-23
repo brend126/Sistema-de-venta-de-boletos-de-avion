@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import sistemadevuelos.ReservaPasaje.Ticket;
 
 public class VuelosDisponibles extends JFrame {
 

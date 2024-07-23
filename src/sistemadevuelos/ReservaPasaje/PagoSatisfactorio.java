@@ -4,12 +4,80 @@
  */
 package sistemadevuelos.ReservaPasaje;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import sistemadevuelos.conexion.ConexionDB;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import sistemadevuelos.InicioSesion.SessionManager;
+
 
 public class PagoSatisfactorio extends javax.swing.JFrame {
 
-    
     public PagoSatisfactorio() {
-        initComponents();
+         initComponents();
+         getContentPane().setBackground(java.awt.Color.WHITE);
+        // Obtener el ID del usuario actual desde SessionManager
+        int idUsuario = SessionManager.getIdUsuarioActual();
+        // Obtener el ID del pasajero asociado
+        int idPasajero = obtenerIdPasajero(idUsuario);
+        // Obtener y mostrar el código de reserva
+        if (idPasajero != -1) {
+            String codigoReserva = obtenerCodigoReserva(idPasajero);
+            if (codigoReserva != null) {
+                codigoReservaLabel.setText("Su código de reserva es: " + codigoReserva);
+            } else {
+                codigoReservaLabel.setText("No se encontró un código de reserva para el ID de pasajero: " + idPasajero);
+            }
+        } else {
+            codigoReservaLabel.setText("No se encontró el ID del pasajero para el usuario: " + idUsuario);
+        }
+    }
+
+    private int obtenerIdPasajero(int idUsuario) {
+        int idPasajero = -1; // Valor predeterminado si no se encuentra el pasajero
+        ConexionDB db = new ConexionDB();
+        try (Connection conn = (Connection) db.conectar()) {
+            if (conn != null) {
+                String sql = "SELECT id FROM pasajeros WHERE usuario_id = ?";
+                try (PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql)) {
+                    pstmt.setInt(1, idUsuario);
+                    try (ResultSet rs = pstmt.executeQuery()) {
+                        if (rs.next()) {
+                            idPasajero = rs.getInt("id");
+                        } else {
+                            System.out.println("No se encontró el pasajero para el usuario: " + idUsuario);
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idPasajero;
+    }
+
+    private String obtenerCodigoReserva(int idPasajero) {
+        String codigoReserva = null;
+        ConexionDB db = new ConexionDB();
+        try (Connection conn = (Connection) db.conectar()) {
+            if (conn != null) {
+                String sql = "SELECT codigo_reserva FROM pasajeros WHERE id = ?";
+                try (PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql)) {
+                    pstmt.setInt(1, idPasajero);
+                    try (ResultSet rs = pstmt.executeQuery()) {
+                        if (rs.next()) {
+                            codigoReserva = rs.getString("codigo_reserva");
+                        } else {
+                            System.out.println("No se encontró el código de reserva para el ID de pasajero: " + idPasajero);
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return codigoReserva;
     }
 
     /**
@@ -24,60 +92,60 @@ public class PagoSatisfactorio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        codigoReservaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("¡SU PAGO SE HA REALIZADO SATISFACTORIAMENTE!");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel2.setText("Disfrute su proximo destino, le desea:");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/VOLANDO.png"))); // NOI18N
+
+        codigoReservaLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
+                .addGap(0, 73, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(68, 68, 68))
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(115, 115, 115)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(133, 133, 133)
+                            .addComponent(codigoReservaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(codigoReservaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PagoSatisfactorio().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel codigoReservaLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

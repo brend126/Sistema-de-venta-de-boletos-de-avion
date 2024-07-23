@@ -40,9 +40,12 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1260, 984));
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1260, 986));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1366, 984));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1260, 984));
 
         jPanel2.setBackground(new java.awt.Color(37, 150, 190));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -169,7 +172,7 @@ public class RecuperacionContraseñaFase1 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(663, 663, 663)
                         .addComponent(jLabel9)))
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

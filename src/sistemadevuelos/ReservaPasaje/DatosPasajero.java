@@ -76,17 +76,17 @@ private Consultas consultas;
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemadevuelos/Imagenes/image (1).png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 32)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ultimos pasos para irte");
         jLabel2.setToolTipText("");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Datos del pasajero");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("+Información personal");
 
@@ -129,7 +129,7 @@ private Consultas consultas;
 
         PaisEmisorPas_txt.setBorder(new RoundedCornerBorder(8));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("+Información de contacto");
 
@@ -151,7 +151,7 @@ private Consultas consultas;
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Dirección física:");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("+Información de emergencia");
 
@@ -404,7 +404,7 @@ private Consultas consultas;
             JOptionPane.showMessageDialog(null,"Por favor registre al proximo pasajero.");
         }
     }
-    this.dispose();
+    
 }
 
 private void limpiarCampos() {

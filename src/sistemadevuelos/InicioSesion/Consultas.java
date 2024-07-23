@@ -7,35 +7,46 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import sistemadevuelos.conexion.ConexionDB;
 
 public class Consultas {
     
-    public void guardarUsuarios(String correo, String nombre, char[] password, char[] confirmacionPassword) {
+    public int guardarUsuarios(String correo, String nombre, char[] password, char[] confirmacionPassword) {
         if (!String.valueOf(password).equals(String.valueOf(confirmacionPassword))) {
             JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-            return;
+            return -1; // Indica error
         }
-        
+
         ConexionDB db = new ConexionDB();
         String sql = "INSERT INTO usuarios(correo, nombre, clave) VALUES (?, ?, ?)";
-        
+        int idUsuario = -1;
+
         try (Connection conexion = db.conectar();
-             PreparedStatement pst = conexion.prepareStatement(sql)) {
+             PreparedStatement pst = conexion.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
             pst.setString(1, correo);
-            pst.setString(2, nombre);
+            pst.setString(2, nombre); // Asegúrate de pasar el nombre
             pst.setString(3, String.valueOf(password)); // Convertir char[] a String para almacenar en la base de datos
-            
-            int rs = pst.executeUpdate();
-            if (rs > 0) {
-                JOptionPane.showMessageDialog(null, "Usuario guardado correctamente");
+
+            int filasAfectadas = pst.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                try (ResultSet rs = pst.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        idUsuario = rs.getInt(1); // Obtener el ID generado
+                        JOptionPane.showMessageDialog(null, "Usuario guardado correctamente. ");
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Error al guardar el usuario");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al guardar el usuario: " + e.getMessage());
         }
+
+        return idUsuario; // Retornar el ID del usuario creado
     }
     
 public int AccesoUsuario(String correo, char[] pass) {
@@ -68,7 +79,19 @@ public int AccesoUsuario(String correo, char[] pass) {
     }
     
 
-public void guardarDatosPasajero(String nombre, String fechaNacimiento, String genero, String nacionalidad, String numPasaporte,
+ // Método para generar un código de reserva aleatorio
+    private String generarCodigoReserva() {
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder codigo = new StringBuilder();
+        Random rnd = new Random();
+        while (codigo.length() < 6) { // Puedes ajustar la longitud del código según tus necesidades
+            int index = (int) (rnd.nextFloat() * caracteres.length());
+            codigo.append(caracteres.charAt(index));
+        }
+        return codigo.toString();
+    }
+
+    public void guardarDatosPasajero(String nombre, String fechaNacimiento, String genero, String nacionalidad, String numPasaporte,
                                      String paisEmisorPas, String correo, String telefono, String direccion,
                                      String contactoEmer, String relacionEmer, String telefonoEmer, int idUsuario) {
         ConexionDB db = new ConexionDB();
@@ -76,12 +99,15 @@ public void guardarDatosPasajero(String nombre, String fechaNacimiento, String g
         
         String sql = "INSERT INTO pasajeros (nombre_completo, fecha_nacimiento, genero, nacionalidad, num_pasaporte, " +
                      "pais_emisor_pasaporte, correo, telefono, direccion, contacto_emergencia, relacion_emergencia, " +
-                     "telefono_emergencia, usuario_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                     "telefono_emergencia, codigo_reserva, usuario_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try {
             conn = db.conectar();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             
+            // Generar código de reserva
+            String codigoReserva = generarCodigoReserva();
+
             pstmt.setString(1, nombre);
             pstmt.setString(2, fechaNacimiento);
             pstmt.setString(3, genero);
@@ -94,7 +120,8 @@ public void guardarDatosPasajero(String nombre, String fechaNacimiento, String g
             pstmt.setString(10, contactoEmer);
             pstmt.setString(11, relacionEmer);
             pstmt.setString(12, telefonoEmer);
-            pstmt.setInt(13, idUsuario);
+            pstmt.setString(13, codigoReserva);
+            pstmt.setInt(14, idUsuario);
             
             int rowsInserted = pstmt.executeUpdate();
             if (rowsInserted > 0) {
@@ -115,5 +142,4 @@ public void guardarDatosPasajero(String nombre, String fechaNacimiento, String g
             }
         }
     }
-
 }

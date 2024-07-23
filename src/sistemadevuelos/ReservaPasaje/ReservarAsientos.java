@@ -6,7 +6,17 @@ package sistemadevuelos.ReservaPasaje;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import sistemadevuelos.InicioSesion.SessionManager;
+import sistemadevuelos.conexion.ConexionDB;
 
 
 public class ReservarAsientos extends javax.swing.JFrame {
@@ -15,7 +25,81 @@ public class ReservarAsientos extends javax.swing.JFrame {
     public ReservarAsientos() {
         initComponents();
         addMouseHoverListeners();
+        
+         A1.setActionCommand("A1");
+        A2.setActionCommand("A2");
+        A3.setActionCommand("A3");
+        B1.setActionCommand("B1");
+        B2.setActionCommand("B2");
+        B3.setActionCommand("B3");
+        C1.setActionCommand("C1");
+        C2.setActionCommand("C2");
+        C3.setActionCommand("C3");
+        
+         // Obtener el ID del usuario actual desde SessionManager
+        int idUsuario = SessionManager.getIdUsuarioActual();
+        // Obtener el ID del pasajero asociado
+        int idPasajero = obtenerIdPasajero(idUsuario);
     }
+    
+     private List<String> obtenerAsientosSeleccionados() {
+    List<JCheckBox> checkboxes = Arrays.asList(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+    List<String> asientosSeleccionados = new ArrayList<>();
+
+    for (JCheckBox checkBox : checkboxes) {
+        if (checkBox.isSelected()) {
+            asientosSeleccionados.add(checkBox.getActionCommand());
+        }
+    }
+
+    return asientosSeleccionados;
+}
+
+
+
+     private int obtenerIdPasajero(int idUsuario) {
+        int idPasajero = -1; // Valor predeterminado si no se encuentra el pasajero
+        ConexionDB db = new ConexionDB();
+        try (com.mysql.jdbc.Connection conn = (com.mysql.jdbc.Connection) db.conectar()) {
+            if (conn != null) {
+                String sql = "SELECT id FROM pasajeros WHERE usuario_id = ?";
+                try (com.mysql.jdbc.PreparedStatement pstmt = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql)) {
+                    pstmt.setInt(1, idUsuario);
+                    try (ResultSet rs = pstmt.executeQuery()) {
+                        if (rs.next()) {
+                            idPasajero = rs.getInt("id");
+                        } else {
+                            System.out.println("No se encontró el pasajero para el usuario: " + idUsuario);
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idPasajero;
+    }
+    public void guardarAsientosSeleccionados(int idPasajero, List<String> asientos) {
+    ConexionDB db = new ConexionDB();
+    String sql = "INSERT INTO asientos_pasajeros (id_pasajero, asiento) VALUES (?, ?)";
+
+    try (Connection conexion = db.conectar();
+         PreparedStatement pst = conexion.prepareStatement(sql)) {
+        for (String asiento : asientos) {
+            pst.setInt(1, idPasajero);
+            pst.setString(2, asiento); // Aquí se guarda el valor del asiento
+            pst.executeUpdate();
+        }
+
+        JOptionPane.showMessageDialog(null, "Asientos guardados correctamente");
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al guardar los asientos: " + e.getMessage());
+    }
+}
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,28 +116,31 @@ public class ReservarAsientos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        B1 = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
+        A2 = new javax.swing.JCheckBox();
+        A3 = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
+        A1 = new javax.swing.JCheckBox();
+        B2 = new javax.swing.JCheckBox();
+        B3 = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        C1 = new javax.swing.JCheckBox();
+        C2 = new javax.swing.JCheckBox();
+        C3 = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Momento de elegir el lugar mas comodo");
 
+        jButton1.setBackground(new java.awt.Color(255, 202, 85));
         jButton1.setText("Confirma y Paga tu compra");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,43 +159,60 @@ public class ReservarAsientos extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(255, 234, 187));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        B1.setBackground(new java.awt.Color(255, 234, 187));
+        B1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                B1ActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("A");
 
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        A2.setBackground(new java.awt.Color(255, 234, 187));
+        A2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                A2ActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        A3.setBackground(new java.awt.Color(255, 234, 187));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("B");
 
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        A1.setBackground(new java.awt.Color(255, 234, 187));
+
+        B2.setBackground(new java.awt.Color(255, 234, 187));
+        B2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                B2ActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        B3.setBackground(new java.awt.Color(255, 234, 187));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("1");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("2");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("3");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("C");
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        C1.setBackground(new java.awt.Color(255, 234, 187));
+
+        C2.setBackground(new java.awt.Color(255, 234, 187));
+
+        C3.setBackground(new java.awt.Color(255, 234, 187));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -117,20 +221,20 @@ public class ReservarAsientos extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(A2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(A3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox2)))
+                        .addComponent(A1)))
                 .addGap(75, 75, 75)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox9)
+                    .addComponent(C3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox8)
+                                .addComponent(B3)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCheckBox5))
+                            .addComponent(B2))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,11 +246,11 @@ public class ReservarAsientos extends javax.swing.JFrame {
                                 .addGap(65, 65, 65)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(C2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(C1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(B1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 77, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -155,7 +259,7 @@ public class ReservarAsientos extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jLabel5))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -163,22 +267,22 @@ public class ReservarAsientos extends javax.swing.JFrame {
                             .addComponent(jLabel3))))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox3)
+                    .addComponent(C1)
                     .addComponent(jLabel6)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2))
+                    .addComponent(B1)
+                    .addComponent(A1))
                 .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jCheckBox4)
-                        .addComponent(jCheckBox6)
-                        .addComponent(jCheckBox5))
+                        .addComponent(A2)
+                        .addComponent(C2)
+                        .addComponent(B2))
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(A3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(C3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(B3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(71, 71, 71))
         );
@@ -201,12 +305,10 @@ public class ReservarAsientos extends javax.swing.JFrame {
                         .addGap(0, 53, Short.MAX_VALUE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(98, 98, 98))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +325,7 @@ public class ReservarAsientos extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addGap(50, 50, 50))))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -244,9 +346,9 @@ public class ReservarAsientos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
+         
+    }//GEN-LAST:event_B1ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         //Para volver a datos del pasajero haciendo click en el logo
@@ -259,12 +361,22 @@ public class ReservarAsientos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    }//GEN-LAST:event_B2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Para volver a pago haciendo click en el logo
+         List<String> asientosSeleccionados = obtenerAsientosSeleccionados();
+    int idUsuario = SessionManager.getIdUsuarioActual(); // Obtener el ID del usuario actual
+    int idPasajero = obtenerIdPasajero(idUsuario); // Obtener el ID del pasajero asociado
+
+    if (idPasajero != -1) { // Verificar que se encontró el pasajero
+        guardarAsientosSeleccionados(idPasajero, asientosSeleccionados);
+    } else {
+        JOptionPane.showMessageDialog(null, "No se pudo obtener el ID del pasajero.");
+    }
+
+//Para volver a pago haciendo click en el logo
         Pago p = new Pago();
 
         // Hacer visible el JFrame 
@@ -274,19 +386,19 @@ public class ReservarAsientos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void A2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_A2ActionPerformed
  private void addMouseHoverListeners() {
-        addMouseHoverListener(jCheckBox1, 3000);
-        addMouseHoverListener(jCheckBox2, 3000);
-        addMouseHoverListener(jCheckBox3, 3000);
-        addMouseHoverListener(jCheckBox4, 2500);
-        addMouseHoverListener(jCheckBox5, 2500);
-        addMouseHoverListener(jCheckBox6, 2500);
-        addMouseHoverListener(jCheckBox7, 1000);
-        addMouseHoverListener(jCheckBox8, 1000);
-        addMouseHoverListener(jCheckBox9, 1000);
+        addMouseHoverListener(B1, 3000);
+        addMouseHoverListener(A1, 3000);
+        addMouseHoverListener(C1, 3000);
+        addMouseHoverListener(A2, 2500);
+        addMouseHoverListener(B2, 2500);
+        addMouseHoverListener(C2, 2500);
+        addMouseHoverListener(A3, 1000);
+        addMouseHoverListener(B3, 1000);
+        addMouseHoverListener(C3, 1000);
     }
 
     private void addMouseHoverListener(JCheckBox checkBox, int price) {
@@ -307,16 +419,16 @@ public class ReservarAsientos extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox A1;
+    private javax.swing.JCheckBox A2;
+    private javax.swing.JCheckBox A3;
+    private javax.swing.JCheckBox B1;
+    private javax.swing.JCheckBox B2;
+    private javax.swing.JCheckBox B3;
+    private javax.swing.JCheckBox C1;
+    private javax.swing.JCheckBox C2;
+    private javax.swing.JCheckBox C3;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

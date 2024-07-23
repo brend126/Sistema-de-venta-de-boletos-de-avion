@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistemadevuelos.InicioSesion;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import sistemadevuelos.BusquedaVuelos.Busqueda;
 import sistemadevuelos.Home.Inicio;
@@ -306,27 +307,25 @@ public class Registrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_nombre_txtActionPerformed
 
     private void registrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_btnActionPerformed
-    String correo = correo_txt.getText();
+     String correo = correo_txt.getText();
     String nombre = nombre_txt.getText();
     char[] contraseña = contraseña_txt.getPassword();
     char[] confirmacionContraseña = CContraseña_txt.getPassword();
-    
+
     if (correo.isEmpty() || nombre.isEmpty() || contraseña.length == 0 || confirmacionContraseña.length == 0) {
         JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos.");
         return;
     }
-    
-    // Verificar si el correo tiene un formato válido
+
     if (!correo.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
         JOptionPane.showMessageDialog(null, "Por favor, ingresa un correo electrónico válido.");
         return;
     }
-    
-    // Realizar la consulta para validar el inicio de sesión
-    Consultas consultas = new Consultas();
-    int idUsuario = consultas.AccesoUsuario(correo, contraseña);
 
-    if (idUsuario != 0) {
+    Consultas consultas = new Consultas();
+    int idUsuario = consultas.guardarUsuarios(correo, nombre, contraseña, confirmacionContraseña);
+
+    if (idUsuario != -1) {
         // Establecer el ID del usuario actual en la sesión
         SessionManager.setIdUsuarioActual(idUsuario);
 
@@ -335,9 +334,8 @@ public class Registrarse extends javax.swing.JFrame {
         datos.setVisible(true);
         this.dispose();
     } else {
-        JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Error al registrar el usuario", "Error de registro", JOptionPane.ERROR_MESSAGE);
     }
-
     }//GEN-LAST:event_registrar_btnActionPerformed
 
     private void IngresarGoogle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarGoogle_btnActionPerformed

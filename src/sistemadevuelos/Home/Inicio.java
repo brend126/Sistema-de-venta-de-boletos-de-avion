@@ -12,6 +12,7 @@ import sistemadevuelos.BusquedaVuelos.Busqueda;
 import sistemadevuelos.InicioSesion.IniciarSesion;
 import sistemadevuelos.InicioSesion.Registrarse;
 import sistemadevuelos.InicioSesion.RoundedCornerBorder;
+import sistemadevuelos.ReservaPasaje.CheckIn;
 
 
 public class Inicio extends javax.swing.JFrame {
@@ -68,8 +69,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        BotonRegistrarse = new javax.swing.JButton();
-        BotonIniciarSesion = new javax.swing.JButton();
+        CheckIn_btn = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
 
@@ -264,23 +264,13 @@ public class Inicio extends javax.swing.JFrame {
                     .addGap(91, 91, 91)))
         );
 
-        BotonRegistrarse.setBackground(new java.awt.Color(0, 0, 0));
-        BotonRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
-        BotonRegistrarse.setText("Registrarse");
-        BotonRegistrarse.setBorder(new RoundedCornerBorder(8));
-        BotonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+        CheckIn_btn.setBackground(new java.awt.Color(0, 0, 0));
+        CheckIn_btn.setForeground(new java.awt.Color(255, 255, 255));
+        CheckIn_btn.setText("Check In");
+        CheckIn_btn.setBorder(new RoundedCornerBorder(8));
+        CheckIn_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonRegistrarseActionPerformed(evt);
-            }
-        });
-
-        BotonIniciarSesion.setBackground(new java.awt.Color(0, 0, 0));
-        BotonIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        BotonIniciarSesion.setText("Iniciar Sesion");
-        BotonIniciarSesion.setBorder(new RoundedCornerBorder(8));
-        BotonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonIniciarSesionActionPerformed(evt);
+                CheckIn_btnActionPerformed(evt);
             }
         });
 
@@ -321,10 +311,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(518, 518, 518)
-                        .addComponent(BotonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(BotonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(727, 727, 727)
+                        .addComponent(CheckIn_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 47, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -341,9 +329,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BotonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CheckIn_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,25 +381,16 @@ public class Inicio extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_BotonVuelosActionPerformed
 
-    private void BotonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarSesionActionPerformed
-    IniciarSesion inicio = new IniciarSesion();
+    private void CheckIn_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckIn_btnActionPerformed
+        // Crear una instancia del JFrame Busqueda
+    CheckIn c = new CheckIn();
     
-    // Hacer visible el JFrame 
-    inicio.setVisible(true);
-    
-    // Cerrar el JFrame actual 
-    this.dispose();
-    }//GEN-LAST:event_BotonIniciarSesionActionPerformed
-
-    private void BotonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarseActionPerformed
-    Registrarse registro = new Registrarse();
-    
-    // Hacer visible el JFrame
-    registro.setVisible(true);
+    // Hacer visible el JFrame Busqueda
+    c.setVisible(true);
     
     // Cerrar el JFrame actual 
     this.dispose();
-    }//GEN-LAST:event_BotonRegistrarseActionPerformed
+    }//GEN-LAST:event_CheckIn_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,9 +398,8 @@ public class Inicio extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonIniciarSesion;
-    private javax.swing.JButton BotonRegistrarse;
     private javax.swing.JButton BotonVuelos;
+    private javax.swing.JButton CheckIn_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -51,7 +51,7 @@ public class DetalleVuelo extends javax.swing.JFrame {
     Precio.setText("Precio: " + precio.toString());
     HorarioDeSalida.setText("Horario de salida: " + horarioSalida.toString());
     HorarioDeLlegada.setText("Horario de llegada: " + horarioLlegada.toString());
-    Puerta.setText("Puerta: Sin definir");
+    
     
     // Guardar la cantidad de pasajes
     FlightDetails.getInstance().setCantidadPasajes(Integer.parseInt(pasajeros.toString()));
@@ -79,7 +79,6 @@ public class DetalleVuelo extends javax.swing.JFrame {
         HorarioDeSalida = new javax.swing.JLabel();
         HorarioDeLlegada = new javax.swing.JLabel();
         NumeroDeVuelo = new javax.swing.JLabel();
-        Puerta = new javax.swing.JLabel();
         continuar_btn = new javax.swing.JButton();
         Aerolinea = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -120,9 +119,6 @@ public class DetalleVuelo extends javax.swing.JFrame {
         NumeroDeVuelo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         NumeroDeVuelo.setText("Número de vuelo:");
 
-        Puerta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Puerta.setText("Puerta:");
-
         continuar_btn.setBackground(new java.awt.Color(0, 0, 0));
         continuar_btn.setForeground(new java.awt.Color(255, 255, 255));
         continuar_btn.setText("Continuar con la compra");
@@ -143,6 +139,10 @@ public class DetalleVuelo extends javax.swing.JFrame {
                 .addGap(129, 129, 129)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(continuar_btn)
+                        .addGap(62, 62, 62))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Destino)
                             .addComponent(FechaDePartida)
@@ -151,15 +151,9 @@ public class DetalleVuelo extends javax.swing.JFrame {
                             .addComponent(Precio)
                             .addComponent(HorarioDeSalida)
                             .addComponent(HorarioDeLlegada)
-                            .addComponent(NumeroDeVuelo))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Puerta)
+                            .addComponent(NumeroDeVuelo)
                             .addComponent(Aerolinea))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(continuar_btn)
-                        .addGap(62, 62, 62))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(230, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,17 +187,11 @@ public class DetalleVuelo extends javax.swing.JFrame {
                 .addComponent(HorarioDeLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(NumeroDeVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(continuar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(Puerta, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(Aerolinea, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(Aerolinea, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(continuar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 100)); // NOI18N
@@ -250,7 +238,7 @@ public class DetalleVuelo extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
         );
 
         pack();
@@ -268,14 +256,14 @@ public class DetalleVuelo extends javax.swing.JFrame {
     }//GEN-LAST:event_continuar_btnActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        //Para volver a vuelos disponibles haciendo click en el logo
-        VuelosDisponibles v = new VuelosDisponibles();
+        //Para volver a busqueda haciendo click en el logo
+        Busqueda busqueda = new Busqueda();
 
-        // Hacer visible el JFrame vuelos
-        v.setVisible(true);
+        // Hacer visible el JFrame Busqueda
+        busqueda.setVisible(true);
 
         // Cerrar el JFrame actual
-        this.dispose();  
+        this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
@@ -293,7 +281,6 @@ public class DetalleVuelo extends javax.swing.JFrame {
     private javax.swing.JLabel Origen;
     private javax.swing.JLabel Pasajes;
     private javax.swing.JLabel Precio;
-    private javax.swing.JLabel Puerta;
     private javax.swing.JButton continuar_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
